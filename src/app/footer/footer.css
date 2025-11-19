@@ -1,0 +1,33 @@
+.footerCmp{
+    background-color: rgb(21, 19, 19);
+    display: flex;
+    padding: 15px 15px 1px 15px;
+    margin: 0;
+}
+.footerFieldTitle{
+    color: white;
+}
+.footerFieldContainer{
+    list-style: none;
+    color: aquamarine;
+    padding: 2px;
+}
+.footerFieldValue{
+
+    list-style: none;
+    color: aquamarine;
+    padding: 2px;
+    
+}
+.footerFieldSocial{
+     list-style: none;
+    color: aquamarine;
+    padding: 2px;
+    display: flex;
+}
+.socialLogos{
+    height: 30px;
+    width: 30px;
+    border-radius: 100%;
+    padding: 5px;
+}
