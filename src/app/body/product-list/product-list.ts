@@ -15,7 +15,7 @@ export class ProductList {
    products:any = [];
 
      ngOnInit():void{
-    this.http.get('http://localhost:3000/products').subscribe((res:any)=>{
+    this.http.get('https://gomath-backend.onrender.com/products').subscribe((res:any)=>{
       this.products=res.data;
       
     })

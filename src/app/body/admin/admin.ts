@@ -31,7 +31,7 @@ export class Admin {
       formData.append("productImage", this.selectedFile);
     }
 
-    this.http.post("http://localhost:3000/product", formData)
+    this.http.post("https://gomath-backend.onrender.com/product", formData)
       .subscribe((res) => {
         console.log("Uploaded Successfully", res);
       });
