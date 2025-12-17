@@ -1,31 +1,37 @@
-<div class="modal-overlay"></div>
+<!-- Background Overlay -->
+<div class="modal-overlay" (click)="closeModal()"></div>
 
+<!-- Modal -->
 <div class="product-modal">
 
-  <!-- Close Button (top-left) -->
+  <!-- Close Button -->
   <button class="close-btn" (click)="closeModal()">×</button>
 
+  <!-- Content -->
   <div class="modal-content">
 
+    <!-- LEFT -->
     <div class="modal-left">
       <h1 class="product-title">{{ product.productName }}</h1>
 
       <p class="product-description">
         {{ product.productDescription }}
       </p>
-<div class="product-services">
-  <h3>Available Services</h3>
 
-<div class="service-list">
-  @for (service of productServices; track service) {
-    <span class="service-chip">
-      {{ service }}
-    </span>
-  }
-</div>
-</div>
+      <div class="product-services">
+        <h3>Available Services</h3>
+
+        <div class="service-list">
+          @for (service of productServices; track service) {
+            <span class="service-chip">
+              {{ service }}
+            </span>
+          }
+        </div>
+      </div>
     </div>
 
+    <!-- RIGHT -->
     <div class="modal-right">
       <img
         class="modal-image"
@@ -36,7 +42,11 @@
 
   </div>
 
+  <!-- Footer -->
   <div class="modal-footer">
-    <button class="quote-btn" (click)="navigateToQuote()">Get Quote</button>
+    <button class="quote-btn" (click)="navigateToQuote()">
+      Get Quote
+    </button>
   </div>
+
 </div>

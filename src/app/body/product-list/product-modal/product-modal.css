@@ -1,26 +1,31 @@
-/* Background Overlay */
+/* ================= OVERLAY ================= */
 .modal-overlay {
   position: fixed;
   inset: 0;
-  background: rgba(0,0,0,0.55);
+  background: rgba(0, 0, 0, 0.55);
   backdrop-filter: blur(3px);
   z-index: 998;
 }
 
-/* Modal Box */
+/* ================= MODAL ================= */
 .product-modal {
   position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
 
-  width: 750px;
-  background: #fff;
+  width: 700px;
+  max-width: 90vw;
+  max-height: 85vh;
+  overflow-y: auto;
+
+  background: #ffffff;
   border-radius: 18px;
-  box-shadow: 
+  padding: 30px 35px 20px;
+
+  box-shadow:
     0 8px 30px rgba(0,0,0,0.15),
     0 4px 15px rgba(0,0,0,0.10);
-  padding: 30px 35px 20px 35px;
 
   display: flex;
   flex-direction: column;
@@ -28,21 +33,34 @@
 
   z-index: 999;
   font-family: 'Poppins', sans-serif;
+
+  animation: modalFade 0.25s ease;
 }
 
-/* Close Button - TOP RIGHT */
+/* ================= ANIMATION ================= */
+@keyframes modalFade {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -55%);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%);
+  }
+}
+
+/* ================= CLOSE BTN ================= */
 .close-btn {
   position: absolute;
   top: 15px;
-  right: 15px;    /* ← moved from left to right */
+  right: 15px;
+
   font-size: 26px;
-  font-weight: 500;
   background: none;
   border: none;
   cursor: pointer;
   color: #555;
   transition: 0.2s;
-  padding: 5px;
 }
 
 .close-btn:hover {
@@ -50,15 +68,13 @@
   transform: scale(1.1);
 }
 
-
-/* Flex container */
+/* ================= CONTENT ================= */
 .modal-content {
   display: flex;
-  justify-content: space-between;
   gap: 25px;
 }
 
-/* Left Section */
+/* LEFT */
 .modal-left {
   width: 60%;
   display: flex;
@@ -66,76 +82,23 @@
   gap: 15px;
 }
 
-/* Product Title → Premium style */
 .product-title {
   font-size: 28px;
   font-weight: 700;
   color: #1b1b1b;
-  font-family: 'Poppins', sans-serif;
-  letter-spacing: 0.3px;
-  margin-bottom: 5px;
 }
 
-/* Description */
 .product-description {
   font-size: 15px;
   color: #555;
   line-height: 1.5;
 }
 
-/* Services */
+/* SERVICES */
 .product-services h3 {
   font-size: 18px;
   font-weight: 600;
   color: #222;
-  margin-bottom: 4px;
-}
-
-.product-services p {
-  font-size: 15px;
-  color: #444;
-}
-
-/* Right Section (Image) */
-.modal-right {
-  width: 40%;
-  display: flex;
-  justify-content: flex-end;
-}
-
-.modal-image {
-  width: 95%;
- margin: 5px;
-  border-radius: 12px;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-  object-fit: contain;
-}
-
-/* Footer */
-.modal-footer {
-  display: flex;
-  justify-content: flex-end;
-  padding-top: 10px;
-}
-
-.quote-btn {
-  padding: 10px 18px;
-  font-size: 15px;
-  background: #0077ff;
-  color: #fff;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: 0.2s;
-}
-
-.quote-btn:hover {
-  background: #005ed1;
-}
-
-
-.product-services {
-  margin-top: 20px;
 }
 
 .service-list {
@@ -153,10 +116,90 @@
   font-size: 14px;
   font-weight: 500;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  transition: 0.2s;
 }
 
 .service-chip:hover {
   transform: translateY(-2px);
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+}
+
+/* RIGHT */
+.modal-right {
+  width: 40%;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.modal-image {
+  width: 95%;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  object-fit: contain;
+}
+
+/* ================= FOOTER ================= */
+.modal-footer {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.quote-btn {
+  padding: 10px 18px;
+  font-size: 15px;
+  background: #0077ff;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.quote-btn:hover {
+  background: #005ed1;
+}
+
+/* ================= MOBILE VIEW ================= */
+@media (max-width: 768px) {
+
+  .product-modal {
+    width: 95%;
+    max-height: 90vh;
+    padding: 20px;
+    border-radius: 14px;
+  }
+
+  .modal-content {
+    flex-direction: column;
+  }
+
+  .modal-left,
+  .modal-right {
+    width: 100%;
+  }
+
+  .modal-right {
+    justify-content: center;
+  }
+
+  .modal-image {
+    width: 100%;
+    max-height: 220px;
+  }
+
+  .product-title {
+    font-size: 22px;
+  }
+
+  .product-description {
+    font-size: 14px;
+  }
+
+  .modal-footer {
+    justify-content: center;
+  }
+
+  .quote-btn {
+    width: 100%;
+  }
 }
