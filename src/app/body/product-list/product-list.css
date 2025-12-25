@@ -266,17 +266,38 @@
      Maybe standard visible arrows for mobile but smaller?
   */
   .scrollArrow {
-    width: 36px;
-    height: 36px;
-    font-size: 1.1rem;
-    background: rgba(255, 255, 255, 0.95);
-    border: 1px solid #eee;
-    opacity: 1; /* Always visible on mobile as there's no hover */
+    display: none; /* Hide scroll arrows on mobile as we switch to vertical layout */
   }
 
   .productRow {
     gap: 15px;
     padding: 10px 15px; /* Less padding on mobile */
+  }
+}
+
+/* Toggle Views */
+.mobile-view {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .desktop-view {
+    display: none;
+  }
+  
+  .mobile-view {
+    display: block;
+  }
+  
+  .mobile-products-grid {
+    display: grid;
+    grid-template-columns: 1fr; /* Single column */
+    gap: 20px;
+    padding: 10px 15px;
+  }
+  
+  .mobile-products-grid ::ng-deep app-product {
+    width: 100%; /* Full width cards */
   }
 }
 

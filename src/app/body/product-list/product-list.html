@@ -26,20 +26,35 @@
       @if (products.length === 0) {
           <p class="empty-product-text">No products found.</p>
       } @else {
-          @for (row of productRows; track $index) {
-              <div class="rowWrapper">
-                  <button class="scrollArrow leftArrow" (click)="scrollRow(rowContainer, 'left')">&lt;</button>
-                  <div class="productRow" #rowContainer>
-                      @for (prod of row; track $index) {
-                          <app-product 
-                              [productContainer]="prod"
-                              (openModal)="showProductModal($event)">
-                          </app-product>
-                      }
+          <!-- Desktop View: Horizontal Scroll Rows -->
+          <div class="desktop-view">
+              @for (row of productRows; track $index) {
+                  <div class="rowWrapper">
+                      <button class="scrollArrow leftArrow" (click)="scrollRow(rowContainer, 'left')">&lt;</button>
+                      <div class="productRow" #rowContainer>
+                          @for (prod of row; track $index) {
+                              <app-product 
+                                  [productContainer]="prod"
+                                  (openModal)="showProductModal($event)">
+                              </app-product>
+                          }
+                      </div>
+                      <button class="scrollArrow rightArrow" (click)="scrollRow(rowContainer, 'right')">&gt;</button>
                   </div>
-                  <button class="scrollArrow rightArrow" (click)="scrollRow(rowContainer, 'right')">&gt;</button>
+              }
+          </div>
+
+          <!-- Mobile View: Vertical Grid -->
+          <div class="mobile-view">
+              <div class="mobile-products-grid">
+                  @for (prod of products; track $index) {
+                      <app-product 
+                          [productContainer]="prod"
+                          (openModal)="showProductModal($event)">
+                      </app-product>
+                  }
               </div>
-          }
+          </div>
       }
   </div>
 </div>
