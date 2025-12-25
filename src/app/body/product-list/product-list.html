@@ -22,15 +22,23 @@
   </div>
   <hr />
 
-  <div class="productsGrid">
+  <div class="productsContainer">
       @if (products.length === 0) {
           <p class="empty-product-text">No products found.</p>
       } @else {
-          @for (prod of products; track $index) {
-              <app-product 
-                  [productContainer]="prod"
-                  (openModal)="showProductModal($event)">
-              </app-product>
+          @for (row of productRows; track $index) {
+              <div class="rowWrapper">
+                  <button class="scrollArrow leftArrow" (click)="scrollRow(rowContainer, 'left')">&lt;</button>
+                  <div class="productRow" #rowContainer>
+                      @for (prod of row; track $index) {
+                          <app-product 
+                              [productContainer]="prod"
+                              (openModal)="showProductModal($event)">
+                          </app-product>
+                      }
+                  </div>
+                  <button class="scrollArrow rightArrow" (click)="scrollRow(rowContainer, 'right')">&gt;</button>
+              </div>
           }
       }
   </div>

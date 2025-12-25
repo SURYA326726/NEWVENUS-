@@ -14,6 +14,8 @@ export class ProductList implements OnInit {
   allProducts: any[] = []; // Store all products
   products: any[] = []; // Displayed products (filtered)
   
+  productRows: any[][] = [[], [], []]; // 3 separate rows of products
+
   categories: string[] = [];
   selectedCategory: string = 'All Products';
   searchQuery: string = '';
@@ -27,6 +29,7 @@ export class ProductList implements OnInit {
       this.allProducts = res;
       this.products = res;
       this.extractCategories();
+      this.distributeProducts();
     });
   }
 
@@ -55,11 +58,30 @@ export class ProductList implements OnInit {
       const matchesSearch = product.productName.toLowerCase().includes(this.searchQuery);
       return matchesCategory && matchesSearch;
     });
+    this.distributeProducts();
+  }
+
+  distributeProducts() {
+    this.productRows = [[], [], []];
+    this.products.forEach((product, index) => {
+      // Logic: 0-3 -> Row 0, 4-7 -> Row 1, 8-11 -> Row 2, 12-15 -> Row 0, etc.
+      const rowIdx = Math.floor((index % 12) / 4);
+      this.productRows[rowIdx].push(product);
+    });
   }
 
   showProductModal(product: any) {
     console.log(product)
     this.selectedProduct = product;
+  }
+
+  scrollRow(rowContainer: HTMLElement, direction: 'left' | 'right') {
+    const scrollAmount = 300; // Scroll by roughly one item width + gap
+    if (direction === 'left') {
+      rowContainer.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+    } else {
+      rowContainer.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+    }
   }
 }
 
