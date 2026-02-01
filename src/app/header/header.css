@@ -40,15 +40,12 @@
   font-size: 1.8rem;
   font-weight: 800; /* Bolder text */
   letter-spacing: -0.5px;
-  color: var(--text-main);
+  color: black;
   font-family: var(--font-main);
 }
 
 .text-gradient {
-  background: linear-gradient(135deg, #007bff 0%, #00d2ff 100%); /* Fresh blue gradient */
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: black;
 }
 
 /* Nav Content */
